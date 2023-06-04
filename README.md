@@ -3,7 +3,7 @@
 
 ## 电路设计
 假设您使用Arduino Uno/Nano/Pro Mini等基于ATmega168p/328p的板子，或者最小系统：
-- D0-D7接入一个R-2R电阻网络DAC，进行音频输出。（D7为最高位，D0为最低位）
+- D0-D7接入一个R-2R电阻网络DAC，进行音频输出（D7为最高位，D0为最低位）。后级可以根据需要选择是否接功放。
 - D8-D13接矩阵键盘的输出端，A0-A3接矩阵键盘的输入端。键盘细节如图：![](https://github.com/haofanurusai/OttoKeyboard/blob/main/keyboard_design_and_note.png?raw=true)
 - A4和A5为I2C预留。
 
