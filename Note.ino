@@ -16,7 +16,7 @@ int8_t Note::sample(void) {
   counter._16 += period;
   cursor += counter._8[1];
   counter._8[1] = 0;
-  if (status == SUSTAIN && cursor >= sustainEnd) {
+  if (cursor >= sustainEnd && status == SUSTAIN) {
     cursor = sustainStart;
     return pgm_read_byte_near(cursor);
   }
