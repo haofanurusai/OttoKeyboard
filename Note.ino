@@ -16,13 +16,15 @@ int8_t Note::sample(void) {
   counter._16 += period;
   cursor += counter._8[1];
   counter._8[1] = 0;
-  if (cursor >= sustainEnd && status == SUSTAIN) {
-    cursor = sustainStart;
-    return pgm_read_byte_near(cursor);
-  }
-  if (cursor >= noteEnd) {
-    status = END;
-    return 0;
+  if (cursor >= sustainEnd) {
+    if (status == SUSTAIN) {
+      cursor = sustainStart;
+      return pgm_read_byte_near(cursor);
+    }
+    else if (cursor >= noteEnd) {
+      status = END;
+      return 0;
+    }
   }
   return pgm_read_byte_near(cursor);
 }
