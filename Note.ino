@@ -11,20 +11,21 @@ void Note::init(uint8_t _waveform, uint8_t _note, uint8_t _octave) {
   sustainEnd = sustainEndTable[_waveform];
   noteEnd = endAddressTable[_waveform];
   status = SUSTAIN;
+  sustainStartBuffer = pgm_read_byte_near(sustainStart);
 }
 int8_t Note::sample(void) {
   counter._16 += period;
   cursor += counter._8[1];
   counter._8[1] = 0;
-  if (cursor >= sustainEnd) {
-    if (status == SUSTAIN) {
+  if (status == SUSTAIN) {
+    if (cursor >= sustainEnd) {
       cursor = sustainStart;
-      return pgm_read_byte_near(cursor);
+      return sustainStartBuffer;
     }
-    else if (cursor >= noteEnd) {
-      status = END;
-      return 0;
-    }
+  }
+  else if (cursor >= noteEnd) {
+    status = END;
+    return 0;
   }
   return pgm_read_byte_near(cursor);
 }
