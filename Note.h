@@ -31,6 +31,7 @@ class Note {
     uint16_t sustainStart;
     uint16_t sustainEnd;
     uint16_t noteEnd;
+    uint8_t  sustainStartBuffer;
 
   public:
     uint8_t  status;
