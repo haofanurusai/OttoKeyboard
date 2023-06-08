@@ -30,7 +30,12 @@ int8_t Note::sample(void) {
   return pgm_read_byte_near(cursor);
 }
 uint8_t findAvailableNote(void) {
+  if (notes[0].status == END)return 0;
+  if (notes[1].status == END)return 1;
+  if (notes[2].status == END)return 2;
+  if (notes[3].status == END)return 3;
+  if (notes[4].status == END)return 4;
   for (uint8_t i = 0;; ++i) {
-    if (notes[i].status != SUSTAIN)return i;
+    if (notes[i].status == SUSTAIN)return i;
   }
 }
