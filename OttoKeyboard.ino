@@ -17,7 +17,7 @@ uint8_t keyBindTable[21];
 
 // 给ABCDEFG键用的映射表
 const static uint8_t keyRootTable[] = {9, 11, 0, 2, 4, 5, 7};
-const static uint8_t keyWaveformTable[] = {0, 1, 2, 3, 0, 0, 0};
+const static uint8_t keyWaveformTable[] = {0, 1, 2, 3, 4, 5, 6};
 
 extern Note notes[NOTE_NUM + 1];
 
